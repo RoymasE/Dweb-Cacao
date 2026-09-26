@@ -21,6 +21,11 @@ SQL Pstgre
 
 
 ------>Relacion{
+almacen *---* Proceso 
+Proceso *---* Record 
+Proceso *---* Trabajadores 
+Transporte *---* Almacen 
+Transporte *---* Record 
 
 
 
@@ -28,7 +33,6 @@ SQL Pstgre
 
 
 
-  
 }
 
 
@@ -127,9 +131,34 @@ SQL Pstgre
 
 
 ++++++++Procesos de entrega 
+-Se trabaja con la base de datos atrabes de hibernate con el jpa 
+-Backend : SpringBoot
+-Front end :  Angular 
+-Lenguaje: Java , JDK 25
+-Puerto: 8080
+
+
+
 ++++++++Contrase de administrador y detalles 
+usuario: admin 
+contraseña: admin
+--------
+Con respecto a la base de datos 
+
+|Usuario|Rol          |Contraseña|
+|Admin  |Administrador|root      |
+----------
 +++++++++Detallles de la seguridad 
-++++++++Detalles de extenciones 
+-spring-security-test
+
+
+
+
+
+++++++++Detalles de extenciones
+- Maven 
+- postgresql
+- spring-boot-starter-webmvc-test
 
 
 
