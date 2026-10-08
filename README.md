@@ -22,11 +22,11 @@ SQL Pstgre
 
 ------>Relacion{
 almacen *---* Proceso 
-Proceso *---* Record 
-Proceso *---* Trabajadores 
-Transporte *---* Almacen 
-Transporte *---* Record 
-
+Proceso ---* Record 
+Proceso ---* Trabajadores 
+Transporte *--- Almacen 
+Transporte ---* Record 
+almacen ---* proveedor 
 
 
 
@@ -92,7 +92,7 @@ Transporte *---* Record
 
 *Transporte
 -fecha de entrega por proovedor 
--fecha de salñida del cacao procesado 
+-fecha de salida del cacao procesado 
 -compradores del cacao procesado 
 -precio de transporte 
 -kilos transportados 
