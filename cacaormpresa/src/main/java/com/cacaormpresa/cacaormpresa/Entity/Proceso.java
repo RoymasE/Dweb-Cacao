@@ -1,7 +1,18 @@
 package com.cacaormpresa.cacaormpresa.Entity;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
+@Entity
+@Table(name = "proceso")
 public class Proceso {
-private boolean moho;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int procesoid;
+	
+	
+	
+	private boolean moho;
 private boolean humedad;
 private int gradodefermentacion;
 
@@ -54,7 +65,50 @@ public <T> void Modificar(T Entrega, int i){
 
 
 
+/////Almacenamiento completo de compativilidad
 
+//con almacen 
+private Almacen almacen;
+
+    public int getProcesoid() {
+        return procesoid;
+    }
+
+    public void setProcesoid(int procesoid) {
+        this.procesoid = procesoid;
+    }
+
+    public boolean isMoho() {
+        return moho;
+    }
+
+    public void setMoho(boolean moho) {
+        this.moho = moho;
+    }
+
+    public boolean isHumedad() {
+        return humedad;
+    }
+
+    public void setHumedad(boolean humedad) {
+        this.humedad = humedad;
+    }
+
+    public int getGradodefermentacion() {
+        return gradodefermentacion;
+    }
+
+    public void setGradodefermentacion(int gradodefermentacion) {
+        this.gradodefermentacion = gradodefermentacion;
+    }
+
+    public Almacen getAlmacen() {
+        return almacen;
+    }
+
+    public void setAlmacen(Almacen almacen) {
+        this.almacen = almacen;
+    }
 
 
 

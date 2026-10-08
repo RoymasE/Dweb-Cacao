@@ -1,10 +1,22 @@
 package com.cacaormpresa.cacaormpresa.Entity;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
-
-
+@Entity
+@Table(name = "libre")
 public class Libre {
-    private String slote1;
+	@Id
+	private String idlibre;
+//getter
+	public String getidlibreria(){
+return this.idlibre;
+}
+
+//setter
+public void setidlibreria(String idlibre){ this.idlibre = idlibre;}
+     
+	private String slote1;
     private String slote2;
     private String slote3;
     private String slote4;
@@ -69,4 +81,49 @@ break;
 
     }
 
+    public String getIdlibre() {
+        return idlibre;
+    }
+
+    public void setIdlibre(String idlibre) {
+        this.idlibre = idlibre;
+    }
+
+    public String getSlote1() {
+        return slote1;
+    }
+
+    public void setSlote1(String slote1) {
+        this.slote1 = slote1;
+    }
+
+    public String getSlote2() {
+        return slote2;
+    }
+
+    public void setSlote2(String slote2) {
+        this.slote2 = slote2;
+    }
+
+    public String getSlote3() {
+        return slote3;
+    }
+
+    public void setSlote3(String slote3) {
+        this.slote3 = slote3;
+    }
+
+    public String getSlote4() {
+        return slote4;
+    }
+
+    public void setSlote4(String slote4) {
+        this.slote4 = slote4;
+    }
+
+    
+    
+    /////Almacenamiento completo de compativilidad
+
+    
 }

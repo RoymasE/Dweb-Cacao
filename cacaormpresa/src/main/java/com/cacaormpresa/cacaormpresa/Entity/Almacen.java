@@ -8,13 +8,15 @@ import jakarta.validation.constraints.*;
 @Entity
 @Table(name = "almacen")
 public class Almacen {
+@OneToMany(mappedBy = "L1")
+    private Proceso proceso;
 
 
 
     @Id
 	private String idproducto;
 
-    private String proveedor;
+
 
     private String tipodeproducto;
  private double precioproveedor;
@@ -33,13 +35,7 @@ public class Almacen {
         this.idproducto = idproducto;
     }
 
-    public String getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
-    }
+  
 
     public String getTipodeproducto() {
         return tipodeproducto;
@@ -81,8 +77,51 @@ public class Almacen {
 
 
     }
+/////Almacenamiento completo de compativilidad
+    public Proceso getProceso() {
+        return proceso;
+    }
+
+    public void setProceso(Proceso proceso) {
+        this.proceso = proceso;
+    }
+
+    ///Datos de proveedor
+    ///
+    ///
+    ///
+    @ManyToMany(mappedBy = "L4")
+    private Proveedor proveedor;
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+    
+@ManyToMany(mappedBy = "L3")  
+private Transporte transporte;
+
+    public Transporte getTransporte() {
+        return transporte;
+    }
+
+    public void setTransporte(Transporte transporte) {
+        this.transporte = transporte;
+    }
 
 
 
+    
+    
 
+    
+    
+    
+    
+    
+    
+    
 }
