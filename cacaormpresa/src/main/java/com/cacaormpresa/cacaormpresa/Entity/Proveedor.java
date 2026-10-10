@@ -4,8 +4,10 @@ import jakarta.validation.constraints.*;
 
 @Entity
 public class Proveedor{
+	@Id
 private String idproveedor;
 //get ID
+	
 public String getidproveedor(){
 return this.idproveedor;
 }
