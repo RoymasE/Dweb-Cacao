@@ -163,30 +163,84 @@ return repo8.findAll();
 	public void Actualizarproveedor(String id, Proveedor proveedor){
 	Proveedor proveedordb = repo4.findById(id).get();
 		
-	proveedordb.setBolsasdecacao(0);
-        proveedordb.setEntregenbruto(0);
-        proveedordb.setEstadodesaco(0);
+	proveedordb.setBolsasdecacao(proveedor.entrega(2));
+        proveedordb.setEntregenbruto(proveedor.entrega(true));
+        proveedordb.setEstadodesaco(proveedor.entrega(1));
       repo4.save(proveedordb);
 	}
 //*-crear un reguistro -*
+	public void Crear1proveedor(Proveedor proveedor){
+	repo4.save(proveedor);
+	
+	}
 //*-??? -*
 //*-----------------------*/
 	/*---------Trabajadores--------------*
 
-//*-lista all en todas -*
+//*-lista all en todas -*/
+	public List<Trabajadores> listar1trabajadores(){
+	return repo2.findAll();
+	
+	}
+
 //*-busqueda por busqueda -*
+	public Trabajadores listar1uno1trabajador(String id){
+	return repo2.findById(id).get();
+	
+	}
 //*-eliminar un reguistre -*
+	public void Elminar1trabajador(String id){repo2.deleteById(id);}
 //*-actualizar un reguistro -*
+	public void Actualizar1trabjadador(String id, Trabajadores trabajador){
+        Trabajadores trabajadoredb = repo2.findById(id).get();
+        trabajadoredb.setApellido(trabajador.getApellido());
+                trabajadoredb.setContrasenna(trabajador.getContrasenna());
+        trabajadoredb.setFinserv(trabajador.getFinserv());
+
+              
+        trabajadoredb.setTiempodes(trabajador.getTiempodes());
+
+              repo2.save(trabajadoredb);
+
+        }
 //*-crear un reguistro -*
+	public void crear1trabajador(Trabajadores trabajador){
+	repo2.save(trabajador);
+	
+	}
 //*-??? -*
 //*-----------------------*/
 	/*----------Cache-------------*
 
-//*-lista all en todas -*
+//*-lista all en todas -*/
+	public List<Cache> listar1chaches(){
+	return repo7.findAll();
+	
+	}
 //*-busqueda por busqueda -*
+	public Cache lisatar1uno1cache(String id){
+	return repo7.findById(id).get();
+	}
 //*-eliminar un reguistre -*
+	public void eliminar1cache(String id){
+	repo7.deleteById(id);
+	}
 //*-actualizar un reguistro -*
+	public void Actualizar1cache(String id, Cache cache){
+	Cache cachedb = repo7.findById(id).get();
+        cachedb.setSlote1(cache.getSlote1());
+                cachedb.setSlote2(cache.getSlote2());
+        cachedb.setSlote3(cache.getSlote3());
+        cachedb.setSlote4(cache.getSlote4());
+repo7.save(cachedb);
+        
+        
+        
+	}
 //*-crear un reguistro -*
+        
+        
+        
 //*-??? -*
 //*-----------------------*/
 //*-----------Proceso------------*
