@@ -238,18 +238,47 @@ repo7.save(cachedb);
         
 	}
 //*-crear un reguistro -*
-        
+        public void crear1cache(Cache cache){
+		repo7.save(cache);
+		}
         
         
 //*-??? -*
 //*-----------------------*/
 //*-----------Proceso------------*
 
-//*-lista all en todas -*
+//*-lista all en todas -*/
+	public List<Proceso> lista1proceso(){
+	
+	return repo5.findAll();
+	
+	}
 //*-busqueda por busqueda -*
+	public Proceso busqueda1uno1proceso(int id){
+	return repo5.findById(id).get();
+	
+	}
+	
+	
 //*-eliminar un reguistre -*
+	public void eliminar1proceso(int id){
+	
+	repo5.deleteById(id);
+	}
+	
+	
 //*-actualizar un reguistro -*
+	public void Actualizar1proceso(int id, Proceso proceso){
+	Proceso procesodb = repo5.findById(id).get();
+        procesodb.setAlmacen(proceso.getAlmacen());
+        procesodb.setGradodefermentacion(proceso.getGradodefermentacion());
+        procesodb.setHumedad(proceso.isHumedad());
+        procesodb.setMoho(proceso.isMoho());
+        repo5.save(procesodb);
+	
+	}
 //*-crear un reguistro -*
+        
 //*-??? -*
 //*-----------------------*/
 	//*---------Record--------------*
