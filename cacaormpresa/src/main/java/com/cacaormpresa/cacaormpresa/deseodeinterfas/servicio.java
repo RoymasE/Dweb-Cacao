@@ -6,7 +6,7 @@ import com.cacaormpresa.cacaormpresa.Entity.Proceso;
 import com.cacaormpresa.cacaormpresa.Entity.Proveedor;
 import com.cacaormpresa.cacaormpresa.Entity.Trabajadores;
 import com.cacaormpresa.cacaormpresa.Entity.Transporte;
-
+import com.cacaormpresa.cacaormpresa.Entity.Record;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -278,16 +278,40 @@ repo7.save(cachedb);
 	
 	}
 //*-crear un reguistro -*
+	public void crear1proceso(Proceso proceso){
+	repo5.save(proceso);
+	}
         
 //*-??? -*
 //*-----------------------*/
 	//*---------Record--------------*
 
 //*-lista all en todas -*
+	public List<Record> listar1record(){
+	return repo3.findAll();
+	}
 //*-busqueda por busqueda -*
+	public Record lista1uno1record(int id){
+	return repo3.findById(id).get();
+	}
 //*-eliminar un reguistre -*
-//*-actualizar un reguistro -*
+public void eliminar1record(	int id){
+repo3.deleteById(id);
+}
+	//*-actualizar un reguistro -*
+	public void actualizacion1record(int id, Record record){
+	Record dbrecor = repo3.findById(id).get();
+        dbrecor.setEnsascado(record.isEnsascado());
+        dbrecor.setPeso(record.getPeso());
+        
+        repo3.save(dbrecor);
+        
+	}
 //*-crear un reguistro -*
+public void crear1record( Record record){
+repo3.save(record);
+
+}
 //*-??? -*
 //*-----------------------*/
 	//*----------Transporte-------------*
