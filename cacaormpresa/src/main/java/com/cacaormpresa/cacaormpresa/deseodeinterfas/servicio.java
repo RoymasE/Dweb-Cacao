@@ -340,7 +340,7 @@ repo3.save(record);
         dbtransporte.setPreciodecompra(transporte.getPreciodecompra());
         dbtransporte.setPreciodetransporte(transporte.getPreciodetransporte());
         dbtransporte.setRecord(transporte.getRecord());
-       repo1.save(transporte);
+       repo1.save(dbtransporte);
 	}
 //*-crear un reguistro -*
         public void guardar1transporte(Transporte transporte){
