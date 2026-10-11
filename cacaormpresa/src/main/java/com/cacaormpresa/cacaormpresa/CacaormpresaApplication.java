@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CacaormpresaApplication {
 
 	public static void main(String[] args) {
+	System.out.println("\nPower-On");
 		SpringApplication.run(CacaormpresaApplication.class, args);
 	}
 

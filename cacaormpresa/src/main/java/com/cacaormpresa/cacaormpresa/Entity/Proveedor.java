@@ -4,8 +4,10 @@ import jakarta.validation.constraints.*;
 
 @Entity
 public class Proveedor{
+	@Id
 private String idproveedor;
 //get ID
+	
 public String getidproveedor(){
 return this.idproveedor;
 }
@@ -21,7 +23,10 @@ return this.idproveedor;
  private int bolsasdecacao;
  private int estadodesaco;
 
- /// get entrega de saco 
+ /// get entrega de saco
+ ///entrega::
+ ///1 --> estado de saco
+ ///2 --> bolsas de cacao
 public int entrega (int i)
 {
 switch(i){
@@ -41,7 +46,7 @@ return 0;
 
 }
 
-///-----
+///-----dismorfismo no importa si pones true o false entrega el booleano complementario 
 public double entrega(boolean a){
 
 return this.entregenbruto;
@@ -70,8 +75,27 @@ return this.entregenbruto;
     public Proveedor() {
     }
 
+    public String getIdproveedor() {
+        return idproveedor;
+    }
+
+    public double getEntregenbruto() {
+        return entregenbruto;
+    }
+
+    public int getBolsasdecacao() {
+        return bolsasdecacao;
+    }
+
+    public int getEstadodesaco() {
+        return estadodesaco;
+    }
 
 
+    ///getter
+    
+    
+    
 /////Almacenamiento completo de compativilidad
 
 

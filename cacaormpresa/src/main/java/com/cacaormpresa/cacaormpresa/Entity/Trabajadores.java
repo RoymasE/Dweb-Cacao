@@ -2,6 +2,11 @@ package com.cacaormpresa.cacaormpresa.Entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+
+
 @Entity
 @Table(name = "trabajador")
 public class Trabajadores {

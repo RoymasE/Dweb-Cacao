@@ -79,7 +79,7 @@ public class Almacen {
     }
 /////Almacenamiento completo de compativilidad
     public Proceso getProceso() {
-        return proceso;
+        return this.proceso;
     }
 
     public void setProceso(Proceso proceso) {
@@ -94,7 +94,7 @@ public class Almacen {
     private Proveedor proveedor;
 
     public Proveedor getProveedor() {
-        return proveedor;
+        return this.proveedor;
     }
 
     public void setProveedor(Proveedor proveedor) {
