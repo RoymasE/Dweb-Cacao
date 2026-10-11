@@ -317,10 +317,36 @@ repo3.save(record);
 	//*----------Transporte-------------*
 
 //*-lista all en todas -*
+	public List<Transporte> listar1transporte(){
+	
+	return repo1.findAll();
+	}
+	
 //*-busqueda por busqueda -*
+	public Transporte lista1uno1transporte(String id){
+	return repo1.findById(id).get();
+	
+	}
 //*-eliminar un reguistre -*
+	public void eliminar1transporte(String id){
+	repo1.deleteById(id);
+	}
 //*-actualizar un reguistro -*
+	public void actualizar1transporte(String id, Transporte transporte){
+	Transporte dbtransporte = repo1.findById(id).get();
+        dbtransporte.setA(transporte.getA());
+	dbtransporte.setCompradordecaco(transporte.getCompradordecaco());
+        dbtransporte.setKgtransportados(transporte.getKgtransportados());
+        dbtransporte.setPreciodecompra(transporte.getPreciodecompra());
+        dbtransporte.setPreciodetransporte(transporte.getPreciodetransporte());
+        dbtransporte.setRecord(transporte.getRecord());
+       repo1.save(transporte);
+	}
 //*-crear un reguistro -*
+        public void guardar1transporte(Transporte transporte){
+        repo1.save(transporte);
+        }
+        
 //*-??? -*
 //*-----------------------*/
 
