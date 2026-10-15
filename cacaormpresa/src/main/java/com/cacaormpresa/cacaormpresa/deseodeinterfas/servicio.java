@@ -136,7 +136,7 @@ return repo8.findAll();
         }
 	
 //*-crear un reguistro -*
-	public void crear1reguistro(Libre libre){
+	public void crear1reguistrolibre(Libre libre){
 	
 	
 	repo6.save(libre);
