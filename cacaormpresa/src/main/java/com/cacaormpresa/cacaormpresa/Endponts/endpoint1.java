@@ -10,7 +10,7 @@ import com.cacaormpresa.cacaormpresa.Entity.*;
 import org.springframework.web.bind.annotation.GetMapping;
 
 //almacen´ topic
-@Controller
+@RestController
 @RequestMapping("/api/crud/1")
 public class endpoint1 extends Madreendponits{
 
