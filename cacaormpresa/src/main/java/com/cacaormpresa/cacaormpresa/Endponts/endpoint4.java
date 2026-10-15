@@ -33,11 +33,22 @@ public class endpoint4 extends Madreendponits{
     }
 	//Read one 
 	@GetMapping("/readone/{id}")
-    
+public Libre GetOneLibre(@PathVariable String id){
+    return     s.listar1uno1libre(id);
+    }
 	//Read all
-	@GetAllMapping("/readall")
+	@GetMapping("/readall")
+    public List<Libre> getAllLibre(){
+
+        return s.listarlibre();
+
+    }
+
 	//delete one 
 	@DeleteMapping("/delete/{id}")
+    public void deleteLibre(@PathVariable String id){
+        s.eliminar1libre(id);
+    }
 	
 	
 }
