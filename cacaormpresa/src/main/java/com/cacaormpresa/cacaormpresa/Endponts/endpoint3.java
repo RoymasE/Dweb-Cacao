@@ -1,32 +1,35 @@
 package com.cacaormpresa.cacaormpresa.Endponts;
 
+import com.cacaormpresa.cacaormpresa.deseodeinterfas.servicio;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.list;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import com.cacaormpresa.cacaormpresa.Entity.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 
 // Cache´ topic 
 @Controller 
-@RequesMapping("/api/crud/3")
+@RequestMapping("/api/crud/3")
 public class endpoint3 extends Madreendponits{
+    public endpoint3(servicio s)
+    {super(s);}
+
+
+
 	//Create one 
 	@PostMapping("/create/")
 	public void createCache(@RequestBody Cache cache){
-		
+		s.crear1cache(cache);
 		
 	}
 	//Update one 
 	@PutMapping("/update/")
 	public void updateCache(@RequestBody Cache cache){
-		
+		s.Actualizar1cache(cache.getCacheid(),cache);
+
 		
 		
 	}
@@ -34,18 +37,19 @@ public class endpoint3 extends Madreendponits{
 	//Read one 
 	@GetMapping("/readone/{id}")
 	public Cache getonecache(@PathVariable String id){
-		
+		return s.lisatar1uno1cache(id);
 	}
+
 	//Read all
-	@GetAllMapping("/readall")
+	@GetMapping("/readall")
 	public List<Cache> getallcache(){
-		
+		return s.listar1chaches();
 	}
 	//delete one 
 	@DeleteMapping("/delete/{id}")
 	public void deleteCache(@PathVariable String id){
 		
-		
+		s.eliminar1cache(id);
 	}
 	
 	

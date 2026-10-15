@@ -1,23 +1,21 @@
 package com.cacaormpresa.cacaormpresa.Endponts;
 
+import com.cacaormpresa.cacaormpresa.deseodeinterfas.servicio;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.list;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import com.cacaormpresa.cacaormpresa.Entity.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
-
-
-@Controller 
-@RequesMapping("/api/crud/1")
+//almacen´ topic
+@Controller
+@RequestMapping("/api/crud/1")
 public class endpoint1 extends Madreendponits{
-	
+
+    public endpoint1(servicio s)
+    {super(s);}
 	//Mostrar
 	@GetMapping("/getallalmacen")
 	public List<Almacen> GetAllAlmacen(){
@@ -43,7 +41,7 @@ public void UpdateAlmacen(@RequestBody Almacen almacen){
 	//Eliminar 
 	@DeleteMapping("/eliminar/{id}")
 	public void DeleteAlmacen(@PathVariable String id){
-		s.eliminar1almaen(id);
+		s.eliminar1almacen(id);
 		
 	}
 	
@@ -53,7 +51,7 @@ public void UpdateAlmacen(@RequestBody Almacen almacen){
 	@GetMapping("/findone/{id}")
 	public Almacen GetOneAlmacen(@PathVariable String id){
 		
-		s.listar1uno1almacen(id);
+		return s.listar1uno1almacen(id);
 		
 	}
 	

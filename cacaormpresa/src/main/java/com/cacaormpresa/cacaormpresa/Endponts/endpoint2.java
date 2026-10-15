@@ -1,23 +1,24 @@
 package com.cacaormpresa.cacaormpresa.Endponts;
 
+import com.cacaormpresa.cacaormpresa.deseodeinterfas.servicio;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import java.util.list;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 import com.cacaormpresa.cacaormpresa.Entity.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 
 // Procesos´ topic 
 @Controller 
-@RequesMapping("/api/crud/2")
+@RequestMapping("/api/crud/2")
 public class endpoint2 extends Madreendponits{
-	
+
+    public endpoint2(servicio s){
+        super(s);
+    }
+
 	//Read whole 
 	@GetMapping("/readall")
 	public List<Proceso> getAllProceso(){

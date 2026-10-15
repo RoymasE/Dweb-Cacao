@@ -4,7 +4,7 @@ import com.cacaormpresa.cacaormpresa.deseodeinterfas.servicio;
 
 public abstract class Madreendponits {
 //Uso general de este atributo 
-    private final servicio s;
+    protected final servicio s;
 
     public Madreendponits(servicio s) {
         this.s = s;
