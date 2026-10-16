@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "a8deed5a-2886-4314-aaa9-836429865b7e",
+		"name": "Cacao Premium del Perú - API Backend",
+		"description": "Colección completa para pruebas del Backend REST API del proyecto Intranet Cacao Premium del Perú S.A.C.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Autenticación y Control de Acceso (RF-01)",
+			"item": [
+				{
+					"name": "Login (Admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var data = pm.response.json();",
+									"    pm.collectionVariables.set(\"token\", data.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": "http://localhost:8080/api/auth/login"
+					}
+				},
+				{
+					"name": "Login (Gerente)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var data = pm.response.json();",
+									"    pm.collectionVariables.set(\"token\", data.token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"gerente\",\n    \"password\": \"gerente123\"\n}"
+						},
+						"url": "http://localhost:8080/api/auth/login"
+					}
+				},
+				{
+					"name": "Registrar Nuevo Usuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"operario1\",\n    \"password\": \"planta123\",\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Mendoza\",\n    \"email\": \"jmendoza@cacaopremium.pe\",\n    \"rol\": \"ACOPIADOR\"\n}"
+						},
+						"url": "http://localhost:8080/api/auth/register"
+					}
+				},
+				{
+					"name": "Obtener Perfil Actual (/me)",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/auth/me"
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Gestión de Usuarios y Roles (RF-02)",
+			"item": [
+				{
+					"name": "Listar Todos los Usuarios",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/usuarios"
+					}
+				},
+				{
+					"name": "Obtener Usuario por ID",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/usuarios/1"
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Catálogo de Parámetros Base - Áreas (RF-03)",
+			"item": [
+				{
+					"name": "Listar Áreas de Planta",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/areas"
+					}
+				},
+				{
+					"name": "Registrar Nueva Área Operativa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Laboratorio de Análisis Físico-Químico\",\n    \"descripcion\": \"Determinación de acidez, grasa y microbiología\",\n    \"responsable\": \"Carlos Paredes\"\n}"
+						},
+						"url": "http://localhost:8080/api/areas"
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Gestión de Proveedores de Acopio (RF-04)",
+			"item": [
+				{
+					"name": "Listar Agricultores / Proveedores",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/proveedores"
+					}
+				},
+				{
+					"name": "Registrar Nuevo Proveedor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreCompleto\": \"José Miguel Arévalo Ríos\",\n    \"dniRuc\": \"42331199\",\n    \"comunidadSector\": \"Sector Pucallpillo - Juanjuí\",\n    \"parcelaOrigen\": \"Fundo San Lorenzo\",\n    \"codigoContratoComunal\": \"CONTR-COM-04\",\n    \"telefono\": \"942778899\",\n    \"hectareas\": 6.0\n}"
+						},
+						"url": "http://localhost:8080/api/proveedores"
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Clientes Internacionales (RF-05)",
+			"item": [
+				{
+					"name": "Listar Clientes Internacionales",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/clientes"
+					}
+				},
+				{
+					"name": "Registrar Nuevo Cliente Internacional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombreEmpresa\": \"Belgian Fine Chocolates NV\",\n    \"paisDestino\": \"Bélgica\",\n    \"personaContacto\": \"Marc Vanderbroeck\",\n    \"email\": \"orders@belgianfine.be\",\n    \"telefono\": \"+32 2 555 9800\",\n    \"direccionFiscal\": \"Grand Place 28, Bruselas\"\n}"
+						},
+						"url": "http://localhost:8080/api/clientes"
+					}
+				}
+			]
+		},
+		{
+			"name": "6. Catálogo de Cajones de Madera (RF-06)",
+			"item": [
+				{
+					"name": "Listar Cajones de Madera",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/cajones"
+					}
+				},
+				{
+					"name": "Listar Cajones Disponibles",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/cajones/disponibles"
+					}
+				},
+				{
+					"name": "Crear Cajón de Fermentación",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigoCajon\": \"CAJ-04\",\n    \"capacidadKg\": 1200.0,\n    \"tipoMadera\": \"Tornillo\"\n}"
+						},
+						"url": "http://localhost:8080/api/cajones"
+					}
+				}
+			]
+		},
+		{
+			"name": "7. Recepción de Cosecha y Lotes (RF-06)",
+			"item": [
+				{
+					"name": "Listar Lotes de Cacao",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/cosecha/lotes"
+					}
+				},
+				{
+					"name": "Obtener Lote por ID (1)",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/cosecha/lotes/1"
+					}
+				},
+				{
+					"name": "Registrar Recepción de Cacao en Baba (Nuevo Lote)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigoLote\": \"LOTE-2026-004\",\n    \"fechaCosecha\": \"2026-10-15\",\n    \"fechaRecepcion\": \"2026-10-15\",\n    \"proveedorId\": 1,\n    \"cajonId\": 1,\n    \"variedad\": \"Cacao Criollo Fino de Aroma\",\n    \"pesoBabaKg\": 2200.0,\n    \"observaciones\": \"Ingreso fresco desde Juanjuí\"\n}"
+						},
+						"url": "http://localhost:8080/api/cosecha/lotes"
+					}
+				}
+			]
+		},
+		{
+			"name": "8. Monitoreo Técnico de Fermentación (RF-07)",
+			"item": [
+				{
+					"name": "Monitoreo Diario de Fermentación por Lote (Lote 1)",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/fermentacion/lote/1"
+					}
+				},
+				{
+					"name": "Listar Alertas de Temperatura Fuera de Rango (45°C - 50°C)",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/fermentacion/alertas"
+					}
+				},
+				{
+					"name": "Registrar Monitoreo Diario en Cajón",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"loteId\": 3,\n    \"diaNumero\": 3,\n    \"fechaRegistro\": \"2026-10-15\",\n    \"temperaturaCelsius\": 48.5,\n    \"volteoRealizado\": true,\n    \"observaciones\": \"Fase acética adecuada y olor característico\"\n}"
+						},
+						"url": "http://localhost:8080/api/fermentacion/monitoreo"
+					}
+				},
+				{
+					"name": "Completar Fermentación de Lote",
+					"request": {
+						"method": "POST",
+						"url": "http://localhost:8080/api/fermentacion/completar/1"
+					}
+				}
+			]
+		},
+		{
+			"name": "9. Control de Secado y Humedad (RF-08)",
+			"item": [
+				{
+					"name": "Listar Controles de Secado",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/secado"
+					}
+				},
+				{
+					"name": "Obtener Secado por Lote (Lote 1)",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/secado/lote/1"
+					}
+				},
+				{
+					"name": "Registrar Control de Secado (Humedad ~7%)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"loteId\": 1,\n    \"fechaInicio\": \"2026-10-06\",\n    \"fechaFin\": \"2026-10-11\",\n    \"humedadPorcentaje\": 7.0,\n    \"pesoSecoKg\": 1000.0,\n    \"diasSecado\": 5,\n    \"observaciones\": \"Humedad óptima de 7% alcanzada en secador solar\"\n}"
+						},
+						"url": "http://localhost:8080/api/secado/control"
+					}
+				}
+			]
+		},
+		{
+			"name": "10. Contabilización de Pesos por Sección (RF-09 / RF-10)",
+			"item": [
+				{
+					"name": "Listar Pesajes Sección 1 (Granos Secos)",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/pesajes/seccion-1-granos"
+					}
+				},
+				{
+					"name": "Registrar Pesaje Sección 1 (Granos)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"loteId\": 2,\n    \"fechaPesaje\": \"2026-10-12\",\n    \"pesoGranosKg\": 800.0,\n    \"calidadGrado\": \"Grado 1 (Exportación)\",\n    \"observaciones\": \"Almacenado para exportación y molienda\"\n}"
+						},
+						"url": "http://localhost:8080/api/pesajes/seccion-1-granos"
+					}
+				},
+				{
+					"name": "Listar Pesajes Sección 2 (Polvo de Cacao)",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/pesajes/seccion-2-polvo"
+					}
+				},
+				{
+					"name": "Registrar Pesaje Sección 2 (Polvo y Derivados en Molienda)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"loteOrigenId\": 1,\n    \"fechaProcesamiento\": \"2026-10-14\",\n    \"pesoMateriaPrimaKg\": 200.0,\n    \"pesoPolvoCacaoKg\": 110.0,\n    \"pesoMantecaCacaoKg\": 70.0,\n    \"pesoCascarillaMermaKg\": 20.0,\n    \"observaciones\": \"Procesamiento de tortón y pulverizado fino\"\n}"
+						},
+						"url": "http://localhost:8080/api/pesajes/seccion-2-polvo"
+					}
+				}
+			]
+		},
+		{
+			"name": "11. Pedidos y Ventas Internacionales (RF-12)",
+			"item": [
+				{
+					"name": "Listar Pedidos de Venta",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/pedidos"
+					}
+				},
+				{
+					"name": "Registrar Nuevo Pedido Internacional",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numeroPedido\": \"PED-2026-002\",\n    \"clienteId\": 2,\n    \"fechaPedido\": \"2026-10-15\",\n    \"seccionProducto\": \"SECCION_1_GRANOS\",\n    \"cantidadKg\": 240.0,\n    \"precioUnitarioUsd\": 8.80,\n    \"destinoFinal\": \"Puerto de San Francisco, CA\",\n    \"notas\": \"4 sacos de 60 kg grado exportación\"\n}"
+						},
+						"url": "http://localhost:8080/api/pedidos"
+					}
+				},
+				{
+					"name": "Confirmar Pedido de Venta (Reserva Stock ACID)",
+					"request": {
+						"method": "POST",
+						"url": "http://localhost:8080/api/pedidos/2/confirmar"
+					}
+				}
+			]
+		},
+		{
+			"name": "12. Packing List y Despacho Marítimo (RF-13)",
+			"item": [
+				{
+					"name": "Listar Packing Lists",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/packing-list"
+					}
+				},
+				{
+					"name": "Generar Packing List para Exportación",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigoPackingList\": \"PKL-2026-002\",\n    \"pedidoId\": 2,\n    \"fechaDespacho\": \"2026-10-16\",\n    \"puertoOrigen\": \"Puerto del Callao, Perú\",\n    \"puertoDestino\": \"Puerto de San Francisco, Estados Unidos\",\n    \"navieraBuque\": \"MSC Mediterranean Shipping Company\",\n    \"numeroContenedor\": \"MSC-U-128744\",\n    \"precintoAduanero\": \"ADUANA-PE-9921\",\n    \"totalSacosYute\": 4,\n    \"pesoNetoKg\": 240.0,\n    \"pesoBrutoKg\": 248.0,\n    \"observaciones\": \"Sacos de yute de 60 kg paletizados con film strech\"\n}"
+						},
+						"url": "http://localhost:8080/api/packing-list"
+					}
+				}
+			]
+		},
+		{
+			"name": "13. Balance Integral de Masas (RF-11)",
+			"item": [
+				{
+					"name": "Calcular Balance de Masas (Cosechado = Procesado + Exportado + Perdido)",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/balance/integral"
+					}
+				}
+			]
+		},
+		{
+			"name": "14. Dashboard Gerencial y KPIs (RF-14)",
+			"item": [
+				{
+					"name": "Obtener Resumen Ejecutivo para Gráficos",
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:8080/api/dashboard/resumen"
+					}
+				}
+			]
+		}
+	]
+}
